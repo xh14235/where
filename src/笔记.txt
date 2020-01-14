@@ -1,0 +1,99 @@
+fastclick，解决移动端点击事件300ms延迟
+原因：移动端的双击缩放导致click判断延迟
+npm install fastclick --save
+（--save与--save-dev的区别 https://www.cnblogs.com/blackgan/p/7678868.html）
+import FastClick from 'fastclick'
+fastClick.attach(document.body)
+其他解决方式：
+  禁止页面缩放  <meta name = "viewport" content="user-scalable=no" >
+
+
+reset.css、border.css的引入
+在main.js中 import 'styles/reset.css'
+
+
+stylus，css预处理器
+npm install stylus --save
+npm install stylus-loader --save
+<style lang="stylus"></style>
+or @import '~styles/varibles.styl'
+
+
+目录整合
+build -> webpack.base.conf.js
+resolve: {
+  extensions: ['.js', '.vue', '.json'],
+  alias: {
+    'vue$': 'vue/dist/vue.esm.js',
+    '@': resolve('src'),
+    'styles': resolve('src/assets/styles'),
+    'common': resolve('src/common'),
+  }
+}
+
+
+vue-awesome-swiper
+npm install vue-awesome-swiper --save
+在main.js中
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
+Vue.use(VueAwesomeSwiper)
+（github地址：https://github.com/davecat/vue-awesome-swiper；swiper参数见swiper官网）
+
+
+git常用命令
+一般上传
+git add .
+git commit -m '上传备注'
+git push
+远程下载
+git pull
+git checkout 分支名
+分支上传
+git status
+git add .
+git commit -m '上传备注'
+git push
+git checkout master
+git merge 分支名
+（git基本命令：https://www.cnblogs.com/lhxiaosoft/p/6400812.html）
+
+
+min-width: 0 ...不起作用？？？？？？？？？？？？？？？？？？？？？？
+
+
+axios
+npm install axios --save
+import axios from 'axios'
+axios.get('/user?ID=12345').then(function (response) {
+  console.log(response);
+}).catch(function (error) {
+  console.log(error);
+});
+axios.get('/user', {
+  params: {
+    ID: 12345
+  }
+}).then(function (response) {
+  console.log(response);
+}).catch(function (error) {
+  console.log(error);
+});
+
+
+模拟数据放在static文件夹，路径重定义
+config文件夹 -> index.js
+pathRewrite: {
+  '^/api': '/static/mock'
+}
+
+
+better-scroll
+npm install better-scroll --save
+import BScroll from 'better-scroll'
+mounted () {
+  this.scroll = new BScroll(this.$refs.wrapper)
+}
+
+
+ref this.$refs 方便获取及操作DOM
